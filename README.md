@@ -34,7 +34,7 @@ Warning: Updating Fiji occasionally results in a new version of Bioformats plugi
 5. Check that the resulting file size is smaller than the input.
 6. Check that you can open the compressed image in Fiji.
 
-Note: These steps can be carried out using the dataset provided by Jetraw ([Resources > Test Dataset](https://www.jetraw.com/downloads/software)).
+Note: These steps can be carried out with [Jetraw >Resources >Test Dataset](https://www.jetraw.com/downloads/software)) as well.
 
 ## Utility scripts for batch compression
 
