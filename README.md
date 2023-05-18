@@ -30,11 +30,15 @@ Warning: Updating Fiji occasionally results in a new version of Bioformats plugi
 2. Obtain the associated software license key by contacting the relevant person for your institute.
 2. Open Jetraw UI and load the DAT file.
 3. Apply the Jetraw UI license key.
-4. To compress an image, drag and drop an input images such as *M40-raw.tiff* or *CQ1-raw.tiff*, choose *Operation compression* and *Settings: xxx* from the drop down menus and click compress. 
+4. To compress an image,
+- Drag and drop an input image such as *M40-raw.tiff* or *CQ1-raw.tiff*
+- Select *Operation compression* in the drop down menu.
+- Select *Settings: xxx* in the drop down menu.
+- Click *Compress*. 
 5. Check that the resulting file size is smaller than the input.
 6. Check that you can open the compressed image in Fiji.
 
-Note: These steps can be carried out with [Jetraw >Resources >Test Dataset](https://www.jetraw.com/downloads/software)) as well.
+Note: These steps can also be performed with [Jetraw >Resources >Test Dataset](https://www.jetraw.com/downloads/software).
 
 ## Utility scripts for batch compression
 
