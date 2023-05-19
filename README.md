@@ -18,9 +18,9 @@ Refer to [official documentation](https://github.com/Jetraw/bioformats_jetraw).
 1. Install Jetraw UI ([Jetraw UI](https://www.jetraw.com/downloads/software)).
 2. Determine the Bio-Formats version in your Fiji installation by browsing *path_to_fiji_app/jars/bio-formats/*.
 3. Replace the JAR file *formats-bsd-6.x.y.jar* with the corresponding version.
-4. Restart Fiji and check that you can open *M40-compressed.tiff*.
+4. Restart Fiji and check that you can open *M44-compressed.tiff*.
 
-Warning: Updating Fiji occasionally results in a new version of Bioformats plugin, which can break the Jetraw image read capability. To fix this, you will need to reinstall Fiji and replace the JAR file again.
+Warning: Updating Fiji occasionally results in a new version of Bio-Formats plugin, which can break the Jetraw image read capability. <!--To fix this, you will need to reinstall Fiji ([older versions](https://downloads.imagej.net/fiji/archive/)) and replace the JAR file. -->
 
 <!--For Python, similarly install necessary packages (link).-->
 
@@ -30,15 +30,15 @@ Warning: Updating Fiji occasionally results in a new version of Bioformats plugi
 2. Obtain the associated software license key by contacting the relevant person for your institute.
 2. Open Jetraw UI and load the DAT file.
 3. Apply the Jetraw UI license key.
-4. To compress an image,
-- Drag and drop an input image such as *M40-raw.tiff* or *CQ1-raw.tiff*
-- Select *Operation compression* in the drop down menu.
-- Select *Settings: xxx* in the drop down menu.
-- Click *Compress*. 
+4. To compress an image:
+ - Load an input image such as *M44-raw.tiff* (or *CQ1-raw.tiff*).
+ - Select *Action: compress*.
+ - Select *identifier: 000391 standard* (or *identifier: xxx*).
+ - Click *GO*.
 5. Check that the resulting file size is smaller than the input.
 6. Check that you can open the compressed image in Fiji.
 
-Note: These steps can also be performed with [Jetraw >Resources >Test Dataset](https://www.jetraw.com/downloads/software).
+Note: These steps can also be performed on the dataset found under [Jetraw >Resources >Test Dataset](https://www.jetraw.com/downloads/software).
 
 ## Utility scripts for batch compression
 
