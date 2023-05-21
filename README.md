@@ -44,24 +44,26 @@ Note: These steps can also be performed on the dataset found under [Jetraw >Reso
 
 ## Utility scripts for batch compression
 
+Pre-requisite: You can compress images with Jetraw UI in your environment.
+
 #### Setting up `bfconvert`
 
-Download the Bio-Formats commandline tools, [bftools](https://www.openmicroscopy.org/bio-formats/downloads/). Match the Bio-Formats version with above (e.g. bftools.zip from [6.10.1](https://downloads.openmicroscopy.org/bio-formats/6.10.1/artifacts/) or [6.11.1](https://downloads.openmicroscopy.org/bio-formats/6.11.1/artifacts/)) to be on the safe side. You will additionally need to install [Java Runtime](http://www.java.com).
-
-To use the unix executable in MacOS, change the permission in terminal via `chmod +x ./bfconvert`.
+1. Download the Bio-Formats commandline tools, [bftools](https://www.openmicroscopy.org/bio-formats/downloads/). Match the Bio-Formats version with above (e.g. bftools.zip from [6.10.1](https://downloads.openmicroscopy.org/bio-formats/6.10.1/artifacts/) or [6.11.1](https://downloads.openmicroscopy.org/bio-formats/6.11.1/artifacts/)) to be on the safe side.
+2. Install [Java Runtime](http://www.java.com).
+3. (macOS only) To use the unix executable, change the permission in terminal via `chmod +x ./bfconvert`.
 
 Let's convert an Olympus VSI file to OME-TIFF. Change directory to your bftools folder and run:
 
 ```
 ./bfconvert -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
 ```
-The argument `-series 0` skips the thumbnail image (series 1) in the VSI file.
+The argument `-series 0` instructs bfconvert to skip the thumbnail image (series 1) in the VSI file. See [documentation](https://docs.openmicroscopy.org/bio-formats/6.10.1/users/comlinetools/conversion.html) for more options.
 
-For the dataset [M44test](https://biocenterat-my.sharepoint.com/personal/keisuke_ishihara_imp_ac_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkeisuke%5Fishihara%5Fimp%5Fac%5Fat%2FDocuments%2FJetraw%5FVBCBioOptics&ga=1), the output should be four tiff files corresponding to z-stacks of the four channels. The total file size of the input and output are similar at ~637MB.
+For the dataset [M44test](https://biocenterat-my.sharepoint.com/personal/keisuke_ishihara_imp_ac_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkeisuke%5Fishihara%5Fimp%5Fac%5Fat%2FDocuments%2FJetraw%5FVBCBioOptics&ga=1), the output should be four tiff files corresponding to z-stacks of the four channels. The file size of the input and output are both ~637MB.
 
 #### Setting up `bfconvert` with Jetraw compression
 
-To enable Jetraw compression in `bfconvert`, replace the *bioformats_package.jar* with the proprietary version found (restricted access links for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
+To enable Jetraw compression in `bfconvert`, replace the *bioformats_package.jar* with the Jetraw proprietary version (restricted access links for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
 
 Now we can convert and compress simultaneously:
 
@@ -73,7 +75,8 @@ M44test dataset shrinks from 637MB to 116MB, which is ~82% reduction in file siz
 
 #### Python script for batch conversion and compression
 
-We basically want to repeat the above command for all files in a given directory. To do this, we will use a Python script.
+To repeat the above command for all files in a given directory, we will use a Python script.
+
 
 <!--
 
