@@ -71,9 +71,8 @@ Now we can convert and compress simultaneously:
 ./bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
 ```
 
-M44test dataset shrinks from 637MB to 116MB, which is ~82% reduction in file size. Make sure that you can browse the tiff files in Fiji.
-
-#### Python script for batch conversion and compression
+M44test dataset shrinks from 637MB to 116MB. This is a ~82% reduction in file size!
+### Python script for batch conversion and compression
 
 To repeat the above command for all files in a given directory, we will use a Python script.
 
