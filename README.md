@@ -30,8 +30,7 @@ Warning: Avoid updating Fiji or the Bio-Formats plugin as it can compromise the 
 
 1. Obtain the DAT file that is specific to your microscope ([VBC](https://biocenterat-my.sharepoint.com/:f:/g/personal/keisuke_ishihara_imp_ac_at/ErPO_7xw7lVKpNxMvQoY8N8B_CrWwhno9pOy0Sr8faB47g?e=3Tuo1R), Ishihara lab, *public links*).
 2. Obtain the associated software license key by contacting the relevant person for your institute.
-2. Open Jetraw UI and load the DAT file.
-3. Apply the Jetraw UI license key.
+3. Open Jetraw UI. Load the DAT file. Apply the Jetraw license key.
 4. To compress an image:
  - Load an input image such as *M44-raw.tiff* (or *CQ1-raw.tiff*).
  - Select *Action: compress*.
@@ -72,6 +71,7 @@ Now we can convert and compress simultaneously:
 ```
 
 M44test dataset shrinks from 637MB to 116MB. This is a ~82% reduction in file size!
+
 ### Python script for batch conversion and compression
 
 To repeat the above command for all files in a given directory, we will use a Python script.
