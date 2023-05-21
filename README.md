@@ -18,8 +18,8 @@ Refer to [official documentation](https://github.com/Jetraw/bioformats_jetraw).
 1. Install Jetraw UI ([Jetraw UI](https://www.jetraw.com/downloads/software)).
 2. Determine the Bio-Formats version in your Fiji installation by browsing *path_to_fiji_app/jars/bio-formats/*.
 3. Replace the JAR file *formats-bsd-6.x.y.jar* with the corresponding version.
- - VBC members can obtain 6.10.1 and 6.11.1 JAR files [here](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx).
- - Ishihara lab members can obatin 6.10.1 and 6.11.1 JAR files here.
+ - VBC members can obtain 6.10.1 and 6.11.1 JAR files [here](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) (restricted access).
+ - Ishihara lab members can obatin 6.10.1 and 6.11.1 JAR files here (restricted access).
 4. Restart Fiji and check that you can open *M44-compressed.tiff*.
 
 Warning: Avoid updating Fiji or the Bio-Formats plugin as it can compromise the Jetraw image read capability. If this happens, you will need to reinstall Fiji and repeat all the steps.
@@ -46,30 +46,42 @@ Note: These steps can also be performed on the dataset found under [Jetraw >Reso
 
 #### Setting up `bfconvert`
 
-Download the Bio-Formats commandline tools, [bftools](https://www.openmicroscopy.org/bio-formats/downloads/). To be on the safe side, choose the same Bio-Formats version as above (e.g. [bftools.zip from 6.11.1](https://downloads.openmicroscopy.org/bio-formats/6.11.1/artifacts/)). To run bftools from command line or terminal, you will additionally need to install Java Runtime ([www.java.com](http://www.java.com)).
+Download the Bio-Formats commandline tools, [bftools](https://www.openmicroscopy.org/bio-formats/downloads/). Match the Bio-Formats version with above (e.g. bftools.zip from [6.10.1](https://downloads.openmicroscopy.org/bio-formats/6.10.1/artifacts/) or [6.11.1](https://downloads.openmicroscopy.org/bio-formats/6.11.1/artifacts/)) to be on the safe side. You will additionally need to install [Java Runtime](http://www.java.com).
 
 To use the unix executable in MacOS, change the permission in terminal via `chmod +x ./bfconvert`.
 
-To test that `bfconvert` is properly set up in your environment,
+Let's convert an Olympus VSI file to OME-TIFF. Change directory to your bftools folder and run:
 
 ```
-./bfconvert ~/Downloads/M44test2/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
+./bfconvert -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
+```
+The argument `-series 0` skips the thumbnail image (series 1) in the VSI file.
+
+For the dataset [M44test](https://biocenterat-my.sharepoint.com/personal/keisuke_ishihara_imp_ac_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkeisuke%5Fishihara%5Fimp%5Fac%5Fat%2FDocuments%2FJetraw%5FVBCBioOptics&ga=1), the output should be four tiff files corresponding to z-stacks of the four channels. The total file size of the input and output are similar at ~637MB.
+
+#### Setting up `bfconvert` with Jetraw compression
+
+To enable Jetraw compression in `bfconvert`, replace the *bioformats_package.jar* with the proprietary version found (restricted access links for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
+
+Now we can convert and compress simultaneously:
+
+```
+./bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
 ```
 
-Now, replace the *bioformats_package.jar* with the proprietary version ([VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx), Ishihara lab, *requires permission*)
+M44test dataset shrinks from 637MB to 116MB, which is ~82% reduction in file size. Make sure that you can browse the tiff files in Fiji.
 
+#### Python script for batch conversion and compression
+
+We basically want to repeat the above command for all files in a given directory. To do this, we will use a Python script.
+
+<!--
 
 ```
 ./bfconvert -option ometiff.companion ~/Downloads/out/myfile.companion.ome ~/Downloads/M44test2/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
 ```
 
-#### Python script for batch compression
-
-
-<!--
-
 Input data requirements for Python script:
-
 
 - Bioformat files (e.g. OME-TIFF, Olympus `.vsi`, Zeiss `.czi`, Nikon `.nd2`).
 
