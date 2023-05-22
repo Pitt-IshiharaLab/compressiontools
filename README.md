@@ -58,31 +58,29 @@ Pre-requisite: Jetraw UI compression is working in your environment.
 
 Windows:
 ```
-.\bfconvert -series 0 C:\Users\ishihara\Downloads\M44test\myfile.vsi C:\Users\ishihara\Downloads\out\myfile-S%%sC%%c.ome.tif
+.\bfconvert -series 0 C:\Users\ishihara\Downloads\M44test\myfile.vsi C:\Users\ishihara\Downloads\out\myfile-S%%sC%%c.tif
 ```
 
 macOS:
 ```
-./bfconvert -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
+./bfconvert -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.tif
 ```
 
 The argument `-series 0` instructs bfconvert to skip the thumbnail image (series 1) in the VSI file. See [documentation](https://docs.openmicroscopy.org/bio-formats/6.10.1/users/comlinetools/conversion.html) for more options.
 
 ### Setting up `bfconvert` with Jetraw compression
 
-To enable Jetraw compression in `bfconvert`, 
-
-1. In your bftools directory, replace *bioformats_package.jar* with a copy of the Jetraw proprietary version (restricted access links for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
+1. Go to your bftools directory and replace *bioformats_package.jar* with a copy of the Jetraw proprietary version (restricted access links: [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
 2. In command prompt or terminal, enter the command
 
 Windows:
 ```
-.\bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 C:\Users\ishihara\Downloads\M44test\myfile.vsi C:\Users\ishihara\Downloads\out\myfile-S%%sC%%c.ome.tif
+.\bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 C:\Users\ishihara\Downloads\M44test\myfile.vsi C:\Users\ishihara\Downloads\out\myfile-S%%sC%%c.tif
 ```
 
 macOS:
 ```
-./bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
+./bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.tif
 ```
 
 You will find that M44test dataset shrinks from 607MB to 110MB. This is a ~82% reduction in file size!
