@@ -87,10 +87,18 @@ You will find that M44test dataset shrinks from 607MB to 110MB. This is a ~82% r
 
 ### Python script for batch conversion and compression
 
-To process all image files in a given directory, we will use a Python script that makes multiple calls of `bfconvert`.
+To process all image files in a given directory, we will use a Python script that makes multiple calls of bfconvert.
+
+*under development but ready for testing*
+
+On command prompt or terminal:
+
+```
+python batch_bfconvertJetraw.py
+```
 
 
-#### Supported microscopes
+##### Supported microscopes
 
 Note to self: add DAT file and default settings here
 
