@@ -46,40 +46,50 @@ Note: These steps can also be performed on the dataset found under [Jetraw >Reso
 
 ## Utility scripts for batch compression
 
-Pre-requisite: You can compress images with Jetraw UI in your environment.
+Pre-requisite: Jetraw UI compression is working in your environment.
 
-#### Setting up `bfconvert`
+### Setting up `bfconvert`
 
 1. Download the Bio-Formats commandline tools, [bftools](https://www.openmicroscopy.org/bio-formats/downloads/). Match the Bio-Formats version with above (e.g. bftools.zip from [6.10.1](https://downloads.openmicroscopy.org/bio-formats/6.10.1/artifacts/) or [6.11.1](https://downloads.openmicroscopy.org/bio-formats/6.11.1/artifacts/)) to be on the safe side.
 2. Install [Java Runtime](http://www.java.com).
-3. (macOS only) To use the unix executable, change the permission in terminal via `chmod +x ./bfconvert`.
+3. (macOS only) To use the unix executable, change the permission in terminal via `chmod +x ./bfconvert`. 
+4. Download and unzip the dataset [M44test](https://biocenterat-my.sharepoint.com/personal/keisuke_ishihara_imp_ac_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkeisuke%5Fishihara%5Fimp%5Fac%5Fat%2FDocuments%2FJetraw%5FVBCBioOptics&ga=1) or [CQ1test](https://pitt-my.sharepoint.com/:f:/g/personal/ishihara_pitt_edu/Evv0tv71q_tEqesE9icsRrMBDx-TMT8x5M08SQDYM55uWA?e=zPFdwI).
+5. In command prompt or terminal, change directory to your bftools folder and enter the command
 
-Let's convert an Olympus VSI file to OME-TIFF. Change directory to your bftools folder and run:
+Windows:
+```
+.\bfconvert -series 0 C:\Users\ishihara\Downloads\M44test\myfile.vsi C:\Users\ishihara\Downloads\out\myfile-S%%sC%%c.ome.tif
+```
 
+macOS:
 ```
 ./bfconvert -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
 ```
+
 The argument `-series 0` instructs bfconvert to skip the thumbnail image (series 1) in the VSI file. See [documentation](https://docs.openmicroscopy.org/bio-formats/6.10.1/users/comlinetools/conversion.html) for more options.
 
-For the dataset [M44test](https://biocenterat-my.sharepoint.com/personal/keisuke_ishihara_imp_ac_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkeisuke%5Fishihara%5Fimp%5Fac%5Fat%2FDocuments%2FJetraw%5FVBCBioOptics&ga=1), the output should be four tiff files corresponding to z-stacks of the four channels. The file size of the input and output are both ~637MB.
+### Setting up `bfconvert` with Jetraw compression
 
-For the dataset [CQ1test](https://pitt-my.sharepoint.com/:f:/g/personal/ishihara_pitt_edu/Evv0tv71q_tEqesE9icsRrMBDx-TMT8x5M08SQDYM55uWA?e=zPFdwI), ...
+To enable Jetraw compression in `bfconvert`, 
 
-#### Setting up `bfconvert` with Jetraw compression
+1. In your bftools directory, replace *bioformats_package.jar* with a copy of the Jetraw proprietary version (restricted access links for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
+2. In command prompt or terminal, enter the command
 
-To enable Jetraw compression in `bfconvert`, replace the *bioformats_package.jar* with the Jetraw proprietary version (restricted access links for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
+Windows:
+```
+.\bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 C:\Users\ishihara\Downloads\M44test\myfile.vsi C:\Users\ishihara\Downloads\out\myfile-S%%sC%%c.ome.tif
+```
 
-Now we can convert and compress simultaneously:
-
+macOS:
 ```
 ./bfconvert -compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304 -series 0 ~/Downloads/M44test/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
 ```
 
-M44test dataset shrinks from 637MB to 116MB. This is a ~82% reduction in file size!
+You will find that M44test dataset shrinks from 607MB to 110MB. This is a ~82% reduction in file size!
 
 ### Python script for batch conversion and compression
 
-To repeat the above command for all files in a given directory, we will use a Python script.
+To process all image files in a given directory, we will use a Python script that makes multiple calls of `bfconvert`.
 
 
 #### Supported microscopes
