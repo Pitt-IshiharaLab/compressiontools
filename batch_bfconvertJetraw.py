@@ -1,13 +1,20 @@
 import os, glob
+import platform
 
 flag_jetraw = True
 flag_omecompanion = True
 
+# example for macOS
 dldir = '/Users/keisuke/Downloads'
 path_bfconvert = '/Users/keisuke/bftools/bfconvert'
 
-# dldir = 'C:\\Users\\ishihara\\Downloads'
-# bfconvert = 'C:\\Users\\ishihara\\bftools\\bfconvert'
+# example for Windows
+dldir = 'C:\\Users\\ishihara\\Downloads'
+path_bfconvert = 'C:\\Users\\ishihara\\bftools\\bfconvert'
+
+stacks = '-S%sC%c'
+if platform.system() == 'Windows':
+	stacks = stacks.replace("%", "%%")
 
 inputdir = os.path.join(dldir, 'M44test')
 files = glob.glob(os.path.join(inputdir, '*.vsi'))
@@ -21,7 +28,7 @@ file = files[0]
 series    = '-series 0'
 jetraw    = '-compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304'
 
-# overwr    = '-overwrite' # the overwrite parmeter is not working in macOS
+# overwr    = '-overwrite' # the overwrite parameter is not working in macOS or Windows, file size adds to pre-existing files
 
 myin  = os.path.join(dldir, 'M44test/myfile.vsi')
 
@@ -32,10 +39,10 @@ else:
 
 if flag_omecompanion:
 	companion = '-option ometiff.companion ' + os.path.join(dldir, 'out', 'myfile.companion.ome')
-	myout     = os.path.join(dldir, 'out/myfile-S%sC%c.ome.tif')
+	myout     = os.path.join(dldir, 'out', 'myfile'+stacks+'.ome.tif')
 else:
 	companion = ''
-	myout     = os.path.join(dldir, 'out/myfile-S%sC%c.tif')
+	myout     = os.path.join(dldir, 'out', 'myfile'+stacks+'S%sC%c.tif')
 
 mylist = [path_bfconvert, series, jetraw, companion, myin, myout]
 
@@ -43,4 +50,3 @@ cmdstr = ' '.join(mylist)
 
 # print(cmdstr)
 os.system(cmdstr)
-		
