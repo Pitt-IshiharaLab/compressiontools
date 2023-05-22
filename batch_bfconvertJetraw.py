@@ -1,23 +1,33 @@
 import os, glob
+import shutil
 import platform
 
 flag_jetraw = True
 flag_omecompanion = True
 
-# example for macOS
+# for macOS
 dldir = '/Users/keisuke/Downloads'
-path_bfconvert = '/Users/keisuke/bftools/bfconvert'
+path_bftools = '/Users/keisuke/bftools'
 
-# example for Windows
-dldir = 'C:\\Users\\ishihara\\Downloads'
-path_bfconvert = 'C:\\Users\\ishihara\\bftools\\bfconvert'
+# # for Windows
+# dldir = 'C:\\Users\\ishihara\\Downloads'
+# path_bftools = 'C:\\Users\\ishihara\\bftools'
 
 stacks = '-S%sC%c'
 if platform.system() == 'Windows':
 	stacks = stacks.replace("%", "%%")
 
 inputdir = os.path.join(dldir, 'M44test')
-files = glob.glob(os.path.join(inputdir, '*.vsi'))
+outdir = os.path.join(dldir, 'out')
+
+# prepare output directory
+if os.path.exists(outdir):
+	shutil.rmtree(outdir)
+os.makedirs(outdir)
+
+ext_in = '.vsi'
+
+files = glob.glob(os.path.join(inputdir, '*' + ext_in))
 
 # Nfiles = len(files)
 # for file in files:
@@ -25,27 +35,29 @@ files = glob.glob(os.path.join(inputdir, '*.vsi'))
 
 file = files[0]
 
+fnme = os.path.basename(file).replace(ext_in, '') # filename minus extension
+
+# arguments - common for all files
+bfconvert = os.path.join(path_bftools, 'bfconvert')
 series    = '-series 0'
-jetraw    = '-compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304'
-
-# overwr    = '-overwrite' # the overwrite parameter is not working in macOS or Windows, file size adds to pre-existing files
-
-myin  = os.path.join(dldir, 'M44test/myfile.vsi')
-
 if flag_jetraw:
 	jetraw = '-compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304'
 else:
 	jetraw = ''
+# overwr    = '-overwrite' # the overwrite parameter is not working in macOS or Windows, file size adds to pre-existing files
 
+# arguments - file specific
 if flag_omecompanion:
-	companion = '-option ometiff.companion ' + os.path.join(dldir, 'out', 'myfile.companion.ome')
-	myout     = os.path.join(dldir, 'out', 'myfile'+stacks+'.ome.tif')
+	companion = '-option ometiff.companion ' + os.path.join(dldir, 'out', fnme + '.companion.ome')
+	ext_out   = '.ome.tif'
 else:
 	companion = ''
-	myout     = os.path.join(dldir, 'out', 'myfile'+stacks+'S%sC%c.tif')
+	ext_out   = '.tif'
 
-mylist = [path_bfconvert, series, jetraw, companion, myin, myout]
+myin  = os.path.join(inputdir, fnme + ext_in)
+myout = os.path.join(outdir,   fnme + stacks + ext_out)
 
+mylist = [bfconvert, series, jetraw, companion, myin, myout]
 cmdstr = ' '.join(mylist)
 
 # print(cmdstr)
