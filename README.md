@@ -1,8 +1,11 @@
 # compressiontools
  
-This repository contains scripts and instructions for applying [Jetraw image compression](https://www.jetraw.com) to microscopy data. The repository is maintained by the Ishihara lab at the University of Pittsburgh and serves as an internal resource for the lab and collaborators.
+This repository contains scripts and instructions for applying [Jetraw image compression](https://www.jetraw.com) to microscopy data. The repository is maintained by the Ishihara lab at the University of Pittsburgh and serves as an internal resource for the lab and its collaborators. While we make this repository publicly available, request for technical support should be directed to [Jetraw staff](https://www.jetraw.com/contact).
 
-Jetraw achieves ~80% reduction of file size with essentially no loss of image quality thanks to its *metrologically correct* compression algorithm.
+
+## About Jetraw
+
+[Jetraw image compression](https://www.jetraw.com) achieves ~80% reduction of file size with essentially no loss of image quality thanks to its *metrologically correct* compression algorithm. (see [Technology](https://www.jetraw.com/jetraw-technology))
 
 **Jetraw can only compress images from sCMOS cameras.** Thus, Jetraw compression is applicable to most modern widefield, lighsheet, and spinning disc confocal microscopes, but NOT applicable to detector-based systems such as scanning confocal and multiphoton microscopes.
 
@@ -30,7 +33,7 @@ Warning: Avoid updating Fiji or the Bio-Formats plugin as it can compromise the 
 
 1. Obtain the DAT file that is specific to your microscope ([VBC](https://biocenterat-my.sharepoint.com/:f:/g/personal/keisuke_ishihara_imp_ac_at/ErPO_7xw7lVKpNxMvQoY8N8B_CrWwhno9pOy0Sr8faB47g?e=3Tuo1R), Ishihara lab, *public links*).
 2. Obtain the associated software license key by contacting the relevant person for your institute.
-3. Open Jetraw UI. Load the DAT file. Apply the Jetraw license key.
+3. Open Jetraw UI. Load DAT file. Apply license key.
 4. To compress an image:
  - Load an input image such as *M44-raw.tiff* (or *CQ1-raw.tiff*).
  - Select *Action: compress*.
@@ -77,10 +80,20 @@ M44test dataset shrinks from 637MB to 116MB. This is a ~82% reduction in file si
 To repeat the above command for all files in a given directory, we will use a Python script.
 
 
+#### Supported microscopes
+
+Note to self: add DAT file and default settings here
+
+|       | Location | Microscope | Camera |
+| ----- | ----- | ----- | ----- |
+| M40   |  [VBC BioOptics](https://cores.imp.ac.at/biooptics/equipment/?xhtml=1%2F%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%27From%2FRK%3D0%2FRS%3DUhWihNMQI1LWDV3V.sJxktWcMkU-)| Olympus spinning disc confocal      | Hamamatsu Orca Flash x 2 |
+| M44   |  [VBC BioOptics](https://cores.imp.ac.at/biooptics/equipment/?xhtml=1%2F%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%27From%2FRK%3D0%2FRS%3DUhWihNMQI1LWDV3V.sJxktWcMkU-)| Olympus spinning disc confocal      | Hamamatsu Orca Fusion    |
+| M45   |  [VBC BioOptics](https://cores.imp.ac.at/biooptics/equipment/?xhtml=1%2F%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%27From%2FRK%3D0%2FRS%3DUhWihNMQI1LWDV3V.sJxktWcMkU-)| Viventis Lightsheet LS1             | Andor Zyla 4.2 |
+| CQ1   | Ishihara lab | Yokogawa CQ1 spinning disc confocal | Hamamatsu Orca Flash |
+
+
 <!--
 
-```
-./bfconvert -option ometiff.companion ~/Downloads/out/myfile.companion.ome ~/Downloads/M44test2/myfile.vsi ~/Downloads/out/myfile-S%sC%c.ome.tif
 ```
 
 Input data requirements for Python script:
