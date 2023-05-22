@@ -18,11 +18,11 @@ Opening Jetraw images is free, while **image compression requires a software lic
 
 Refer to [official documentation](https://github.com/Jetraw/bioformats_jetraw).
 
+Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej.net/fiji/archive/20221201-1017/) with Bio-Formats 6.11.1
+
 1. Install Jetraw UI ([Jetraw UI](https://www.jetraw.com/downloads/software)).
 2. Determine the Bio-Formats version in your Fiji installation by browsing *path_to_fiji_app/jars/bio-formats/*.
-3. Replace the JAR file *formats-bsd-6.x.y.jar* with the corresponding version.
- - VBC members can obtain 6.10.1 and 6.11.1 JAR files [here](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) (restricted access).
- - Ishihara lab members can obatin 6.10.1 and 6.11.1 JAR files here (restricted access).
+3. Replace the JAR file *formats-bsd-6.x.y.jar* with the corresponding version. (6.11.1 JAR file for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab.)
 4. Restart Fiji and check that you can open *M44-compressed.tiff*.
 
 Warning: Avoid updating Fiji or the Bio-Formats plugin as it can compromise the Jetraw image read capability. If this happens, you will need to reinstall Fiji and repeat all the steps.
