@@ -1,7 +1,10 @@
 import os, glob
 
 
-inputdir = '/Users/keisuke/Downloads/M44test'
+dldir = '/Users/keisuke/Downloads'
+# dldir = 'C:\\Users\\ishihara\\Downloads'
+
+inputdir = os.path.join(dldir, 'M44test')
 
 files = glob.glob(os.path.join(inputdir, '*.vsi'))
 
@@ -13,10 +16,12 @@ Nfiles = len(files)
 file = files[0]
 
 bfconvert = '/Users/keisuke/bftools/bfconvert'
+# bfconvert = 'C:\\Users\\ishihara\\bftools'
+
 series   = '-series 0'
 jetraw   = '-compression Jetraw -jetraw-identifier 000391_standard -tilex 2304 -tiley 2304'
-myin  = '/Users/keisuke/Downloads/M44test/myfile.vsi'
-myout = '/Users/keisuke/Downloads/out/myfile-S%sC%c.ome.tif'
+myin  = os.path.join(dldir, 'M44test/myfile.vsi')
+myout = os.path.join(dldir, 'out/myfile-S%sC%c.ome.tif')
 
 mylist = [bfconvert, series, jetraw, myin, myout]
 cmdstr = ' '.join(mylist)
