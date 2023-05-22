@@ -63,6 +63,8 @@ The argument `-series 0` instructs bfconvert to skip the thumbnail image (series
 
 For the dataset [M44test](https://biocenterat-my.sharepoint.com/personal/keisuke_ishihara_imp_ac_at/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fkeisuke%5Fishihara%5Fimp%5Fac%5Fat%2FDocuments%2FJetraw%5FVBCBioOptics&ga=1), the output should be four tiff files corresponding to z-stacks of the four channels. The file size of the input and output are both ~637MB.
 
+For the dataset [CQ1test](https://pitt-my.sharepoint.com/:f:/g/personal/ishihara_pitt_edu/Evv0tv71q_tEqesE9icsRrMBDx-TMT8x5M08SQDYM55uWA?e=zPFdwI), ...
+
 #### Setting up `bfconvert` with Jetraw compression
 
 To enable Jetraw compression in `bfconvert`, replace the *bioformats_package.jar* with the Jetraw proprietary version (restricted access links for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab).
