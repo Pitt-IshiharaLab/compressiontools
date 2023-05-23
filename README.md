@@ -1,38 +1,38 @@
 # compressiontools
  
-This repository contains scripts and instructions for applying [Jetraw image compression](https://www.jetraw.com) to microscopy data. The repository is maintained by the Ishihara lab at the University of Pittsburgh and serves as an internal resource for the lab and its collaborators. While we make this repository publicly available, request for technical support should be directed to [Jetraw staff](https://www.jetraw.com/contact).
+This repository contains scripts and instructions for applying [Jetraw image compression](https://www.jetraw.com) to microscopy data. The repository is maintained by the Ishihara lab at the University of Pittsburgh and serves as an internal resource for the lab and its collaborators.
+
+While this is a public repository, request for technical support should be directed to the [Jetraw team](https://www.jetraw.com/contact).
 
 
 ## About Jetraw
 
-[Jetraw image compression](https://www.jetraw.com) achieves ~80% reduction of file size with essentially no loss of image quality thanks to its *metrologically correct* compression algorithm. (see [Technology](https://www.jetraw.com/jetraw-technology))
+[Jetraw technology](https://www.jetraw.com/jetraw-technology) achieves ~80% reduction of file size with essentially no loss of image quality thanks to its *metrologically correct* compression algorithm.
 
 **Jetraw can only compress images from sCMOS cameras.** Thus, Jetraw compression is applicable to most modern widefield, lighsheet, and spinning disc confocal microscopes, but NOT applicable to detector-based systems such as scanning confocal and multiphoton microscopes.
 
-Opening Jetraw images is free, while **image compression requires a software license and a hardware specific parameter file**.
+Opening Jetraw images is free, while **image compression requires a software license and hardware specific parameters**.
 
 
 ## Initial set up
 
 #### To open images in Fiji
 
-Refer to [official documentation](https://github.com/Jetraw/bioformats_jetraw).
-
 Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej.net/fiji/archive/20221201-1017/) with Bio-Formats 6.11.1
 
 1. Install Jetraw UI ([Jetraw UI](https://www.jetraw.com/downloads/software)).
-2. Determine the Bio-Formats version in your Fiji installation by browsing *path_to_fiji_app/jars/bio-formats/*.
-3. Replace the JAR file *formats-bsd-6.x.y.jar* with the corresponding version. (6.11.1 JAR file for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab.)
+2. Determine the Bio-Formats version in your Fiji installation (go to: *path_to_fiji_app/jars/bio-formats/*).
+3. Replace *formats-bsd-6.x.y.jar* with Jetraw's version. (6.11.1 JAR file for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab.)
 4. Restart Fiji and check that you can open *M44-compressed.tiff*.
 
-Warning: Avoid updating Fiji or the Bio-Formats plugin as it can compromise the Jetraw image read capability. If this happens, you will need to reinstall Fiji and repeat all the steps.
+**Warning**: Avoid updating this Fiji installation or its Bio-Formats plugin as it can break the Jetraw image read capability. If this breaks, you will need to reinstall Fiji and repeat all the steps.
 
 <!--For Python, similarly install necessary packages (link).-->
 
 #### To compress images
 
-1. Obtain the DAT file that is specific to your microscope ([VBC](https://biocenterat-my.sharepoint.com/:f:/g/personal/keisuke_ishihara_imp_ac_at/ErPO_7xw7lVKpNxMvQoY8N8B_CrWwhno9pOy0Sr8faB47g?e=3Tuo1R), Ishihara lab, *public links*).
-2. Obtain the associated software license key by contacting the relevant person for your institute.
+1. Obtain the DAT file specific to your microscope ([VBC](https://biocenterat-my.sharepoint.com/:f:/g/personal/keisuke_ishihara_imp_ac_at/ErPO_7xw7lVKpNxMvQoY8N8B_CrWwhno9pOy0Sr8faB47g?e=3Tuo1R), Ishihara lab, *public links*).
+2. Obtain the associated software license key from the relevant person at your institute.
 3. Open Jetraw UI. Load DAT file. Apply license key.
 4. To compress an image:
  - Load an input image such as *M44-raw.tiff* (or *CQ1-raw.tiff*).
@@ -42,11 +42,16 @@ Warning: Avoid updating Fiji or the Bio-Formats plugin as it can compromise the 
 5. Check that the resulting file size is smaller than the input.
 6. Check that you can open the compressed image in Fiji.
 
-Note: These steps can also be performed on the dataset found under [Jetraw >Resources >Test Dataset](https://www.jetraw.com/downloads/software).
+##### See also
 
-## Utility scripts for batch compression
+ - [Github - Jetraw/bioformats_jetraw](https://github.com/Jetraw/bioformats_jetraw)
+ -	[Jetraw >Resources >Test Dataset](https://www.jetraw.com/downloads/software)
+
+## Simultaneous file conversion + compression
 
 Pre-requisite: Jetraw UI compression is working in your environment.
+
+Microscopy data formats are vendor-specific and often do not give direct access to tiff files. We combine bfconvert and Jetraw to achieve simultaneous file conversion and compression. The output is Jetraw-compressed OME-TIFF files.
 
 ### Setting up `bfconvert`
 
@@ -85,7 +90,9 @@ macOS:
 
 You will find that M44test dataset shrinks from 607MB to 110MB. This is a ~82% reduction in file size!
 
-### Python script for batch conversion and compression
+## Utility scripts for batch compression
+
+Pre-requisite: `bfconvert -compression Jetraw` is working in your environment.
 
 To process all image files in a given directory, we will use a Python script that makes multiple calls of bfconvert.
 
@@ -109,6 +116,7 @@ Note to self: add DAT file and default settings here
 | M45   |  [VBC BioOptics](https://cores.imp.ac.at/biooptics/equipment/?xhtml=1%2F%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%27From%2FRK%3D0%2FRS%3DUhWihNMQI1LWDV3V.sJxktWcMkU-)| Viventis Lightsheet LS1             | Andor Zyla 4.2 |
 | CQ1   | Ishihara lab | Yokogawa CQ1 spinning disc confocal | Hamamatsu Orca Flash |
 
+add M50
 
 <!--
 
