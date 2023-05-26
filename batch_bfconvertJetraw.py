@@ -14,12 +14,14 @@ flag_omecompanion = True
 dldir = 'D:\\JetrawTesting'
 path_bftools = 'C:\\Users\\ishihara\\bftools'
 
+N_CPUcores = 28
+
 stacks = '-S%sC%c'
 if platform.system() == 'Windows':
 	stacks = stacks.replace("%", "%%")
 
-inputdir = os.path.join(dldir, '230509_JETRAW_M44_TEST')
-outdir = os.path.join(dldir, 'out')
+inputdir = os.path.join(dldir, 'M44-input')
+outdir = os.path.join(dldir, 'M44-JetrawOMETIFF')
 
 # # prepare output directory
 # if os.path.exists(outdir):
@@ -46,14 +48,14 @@ def convertcompress(file):
 
 	# arguments - file specific
 	if flag_omecompanion:
-		companion = '-option ometiff.companion ' + os.path.join(dldir, 'out', fnme + '.companion.ome')
+		companion = '-option ometiff.companion ' + os.path.join(os.path.dirname(file).replace(inputdir, outdir), fnme + '.companion.ome')
 		ext_out   = '.ome.tif'
 	else:
 		companion = ''
 		ext_out   = '.tif'
 
-	myin  = os.path.join(inputdir, fnme + ext_in)
-	myout = os.path.join(outdir,   fnme + stacks + ext_out)
+	myin  = os.path.join(file)
+	myout = os.path.join(os.path.dirname(file).replace(inputdir, outdir),  fnme + stacks + ext_out)
 	option = '-option cellsens.fail_on_missing_ets True'
 
 	mylist = [bfconvert, series, jetraw, option, companion, myin, myout]
@@ -69,8 +71,13 @@ def convertcompress(file):
 
 if __name__ == '__main__':
 
-	with Pool(28) as p:
-		p.map(convertcompress, files)
+	datasets =  glob.glob(os.path.join(inputdir, "*"))
+
+	for dataset in datasets:
+		files = glob.glob(os.path.join(dataset, '*' + ext_in))
+
+		with Pool(N_CPUcores) as p:
+			p.map(convertcompress, files)
 
 # print(cmdstr)
 #os.system(cmdstr)
