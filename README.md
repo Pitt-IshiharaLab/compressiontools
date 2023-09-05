@@ -22,7 +22,7 @@ Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej
 
 1. Install Jetraw UI ([Jetraw UI](https://www.jetraw.com/downloads/software)).
 2. Determine the Bio-Formats version in your Fiji installation (go to: *path_to_fiji_app/jars/bio-formats/*).
-3. Replace *formats-bsd-6.x.y.jar* with Jetraw's version. (6.11.1 JAR file for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and Ishihara lab.)
+3. Replace *formats-bsd-6.x.y.jar* with Jetraw's version. (6.11.1 JAR file for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and [Ishihara lab](https://pitt-my.sharepoint.com/:f:/r/personal/ishihara_pitt_edu/Documents/Jetraw_Pitt-IshiharaLab_restrictedaccess?csf=1&web=1&e=oOXouJ), ask Keisuke for access.)
 4. Restart Fiji and check that you can open *M44-compressed.tiff*.
 
 **Warning**: Avoid updating this Fiji installation or its Bio-Formats plugin as it can break the Jetraw image read capability. If this breaks, you will need to reinstall Fiji and repeat all the steps.
