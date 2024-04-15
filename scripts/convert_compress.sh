@@ -5,6 +5,7 @@ index_pattern="S%%sC%%c"
 in_path="D:/CellVoyagerACE_Data/BO_2ndPass/20240412T174054_BOauto"
 temp_path="D:/jetraw_testing/temp"
 dest_path="D:/jetraw_testing/conv_comp"
+device="306296" # for Ishihara lab CQ1 microscope, options: "306296", "306296_bin2x", "306296_bin4x"
 delete_intermediate=true
 
 #
@@ -40,14 +41,14 @@ if [ -f "$in_path/MeasurementResultMIP.ome.tif" ]; then
     echo "Completed: bfconvert for MeasurementResultMIP.ome.tif"
 fi
 
-if [ -f "$in_path/MeasurementResult.ome.tif" ]; then
-    comp_file="$out_path/MeasurementResult.companion.ome"
-    input_file="$in_path/MeasurementResult.ome.tif"
-    output_file="$out_path/Image/$index_pattern.ome.tif"
-    "$bfc_path" -overwrite -option ometiff.companion "$comp_file" "$input_file" "$output_file"
-    replace_string_in_file "$comp_file" "Image"
-    echo "Completed: bfconvert for MeasurementResult.ome.tif"
-fi
+# if [ -f "$in_path/MeasurementResult.ome.tif" ]; then
+#     comp_file="$out_path/MeasurementResult.companion.ome"
+#     input_file="$in_path/MeasurementResult.ome.tif"
+#     output_file="$out_path/Image/$index_pattern.ome.tif"
+#     "$bfc_path" -overwrite -option ometiff.companion "$comp_file" "$input_file" "$output_file"
+#     replace_string_in_file "$comp_file" "Image"
+#     echo "Completed: bfconvert for MeasurementResult.ome.tif"
+# fi
 
 #
 # Step 2: Use dpcore to compress OME-TIF files
@@ -65,7 +66,7 @@ else
     fi
 fi
 
-dpcore --preserve-extension --overwrite --copy-others -r -c -d  "$final_path" -i 306296 "$out_path"
+dpcore --preserve-extension --overwrite --copy-others -r -c -d  "$final_path" -i "$device" "$out_path"
 echo "Completed: Jetraw compression."
 
 #
