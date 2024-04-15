@@ -83,7 +83,7 @@ echo "Completed: Copy other files."
 if [ "$delete_intermediate" = true ]; then
     if [ -d "$out_path" ]; then
         # Delete all contents of the directory
-        rm -rf "out_path"
+        rm -rf "$out_path"
         echo "Completed: Delete intermediate files in $out_path"
     else
         echo "Directory '$out_path' does not exist."
