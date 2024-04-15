@@ -13,8 +13,8 @@ replace_string_in_file() {
     mv "$temp_file" "$file"
 }
 
-replace_string_in_file "D:\out\MeasurementResult.companion.ome" "Image"
-replace_string_in_file "D:\out\MeasurementResultMIP.companion.ome" "Projection"
+replace_string_in_file "D:/out/MeasurementResult.companion.ome" "Image"
+replace_string_in_file "D:/out/MeasurementResultMIP.companion.ome" "Projection"
 
 # # Check if two input arguments were provided
 # if [ $# -ne 2 ]; then

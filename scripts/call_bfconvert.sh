@@ -19,11 +19,11 @@ run_bfconvert() {
   
 }
 
-bfc_path="C:\Users\lab_user\bftools-6.11.1jetraw\bfconvert.bat"
+bfc_path="C:/Users/lab_user/bftools-6.11.1jetraw/bfconvert.bat"
 bfc_opts="-overwrite -option ometiff.companion"
-comp_file="D:\out\MeasurementResultMIP.companion.ome"
-input_file="D:\CellVoyagerACE_Data\BO_2ndPass\20240412T174054_BOauto\MeasurementResultMIP.ome.tif"
-output_file="D:\out 3\MIP-S%%sC%%c.ome.tif"
+comp_file="D:/out/MeasurementResultMIP.companion.ome"
+input_file="D:/CellVoyagerACE_Data/BO_2ndPass/20240412T174054_BOauto/MeasurementResultMIP.ome.tif"
+output_file="D:/out 3/MIP-S%%sC%%c.ome.tif"
 
 # NOTE: while the directory for companion file needs to exist,
 # the sub-directory for tif images will be created with bfconvert
