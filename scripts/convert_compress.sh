@@ -41,14 +41,14 @@ if [ -f "$in_path/MeasurementResultMIP.ome.tif" ]; then
     echo "Completed: bfconvert for MeasurementResultMIP.ome.tif"
 fi
 
-# if [ -f "$in_path/MeasurementResult.ome.tif" ]; then
-#     comp_file="$out_path/MeasurementResult.companion.ome"
-#     input_file="$in_path/MeasurementResult.ome.tif"
-#     output_file="$out_path/Image/$index_pattern.ome.tif"
-#     "$bfc_path" -overwrite -option ometiff.companion "$comp_file" "$input_file" "$output_file"
-#     replace_string_in_file "$comp_file" "Image"
-#     echo "Completed: bfconvert for MeasurementResult.ome.tif"
-# fi
+if [ -f "$in_path/MeasurementResult.ome.tif" ]; then
+    comp_file="$out_path/MeasurementResult.companion.ome"
+    input_file="$in_path/MeasurementResult.ome.tif"
+    output_file="$out_path/Image/$index_pattern.ome.tif"
+    "$bfc_path" -overwrite -option ometiff.companion "$comp_file" "$input_file" "$output_file"
+    replace_string_in_file "$comp_file" "Image"
+    echo "Completed: bfconvert for MeasurementResult.ome.tif"
+fi
 
 #
 # Step 2: Use dpcore to compress OME-TIF files
