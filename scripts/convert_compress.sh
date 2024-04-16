@@ -10,8 +10,9 @@
 #
 
 bfc_path="bfconvert" # if not in system PATH, enter absolute path to bfconvert.sh for Windows
-index_pattern="S%%sC%%c"
+index_pattern="S%sC%c"
 in_path="D:/CellVoyagerACE_Data/BO_2ndPass/20240412T174054_BOauto"
+in_path="D:/CellVoyagerACE_Data/BO_2ndPass/20240304T191952_BOauto"
 temp_path="D:/jetraw_testing/temp"
 dest_path="D:/jetraw_testing/conv_comp"
 device="306296" # for Ishihara lab CQ1 microscope, options: "306296", "306296_bin2x", "306296_bin4x"
