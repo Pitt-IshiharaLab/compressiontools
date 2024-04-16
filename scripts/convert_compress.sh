@@ -1,5 +1,14 @@
 #!/bin/bash
 
+#
+# This script processes one CQ1 data set for OME-TIF conversion and Jetraw compression.
+# The key operations are the following:
+#
+# 1. Use Bio-Formats CLI to convert individual CQ1 tif to stacks.
+# 2. Use dpcore to compress OME-TIF files.
+# 3: Copy all other files from CQ1 directory.
+#
+
 bfc_path="bfconvert" # if not in system PATH, enter absolute path to bfconvert.sh for Windows
 index_pattern="S%%sC%%c"
 in_path="D:/CellVoyagerACE_Data/BO_2ndPass/20240412T174054_BOauto"
@@ -9,7 +18,7 @@ device="306296" # for Ishihara lab CQ1 microscope, options: "306296", "306296_bi
 delete_intermediate=true
 
 #
-# Step 0: Define functions and parameters
+# Step 0: Define functions and parameters.
 #
 
 replace_string_in_file() {
@@ -29,7 +38,7 @@ out_path="$temp_path/$dataset_name"
 final_path="$dest_path/$dataset_name"
 
 #
-# Step 1: Use Bio-Formats CLI to convert indivudal CQ1 tif to stacks
+# Step 1: Use Bio-Formats CLI to convert individual CQ1 tif to stacks.
 #
 
 if [ -f "$in_path/MeasurementResultMIP.ome.tif" ]; then
@@ -51,7 +60,7 @@ if [ -f "$in_path/MeasurementResult.ome.tif" ]; then
 fi
 
 #
-# Step 2: Use dpcore to compress OME-TIF files
+# Step 2: Use dpcore to compress OME-TIF files.
 #
 
 if [ -d "$final_path" ]; then
