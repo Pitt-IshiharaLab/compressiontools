@@ -14,9 +14,9 @@ While this is a public repository, request for technical support should be direc
 Opening Jetraw images is free, while **image compression requires a software license and hardware specific parameters**.
 
 
-## 1. Basic usage
+## 1. Basic usage with Fiji and Jetraw UI
 
-#### To open compressed images in Fiji
+#### 1.1 Open compressed images in Fiji
 
 Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej.net/fiji/archive/20221201-1017/) with Bio-Formats 6.11.1
 
@@ -27,20 +27,28 @@ Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej
 
 **Warning**: Avoid updating this Fiji installation or its Bio-Formats plugin as it can break the Jetraw image read capability. If this breaks, you will need to reinstall Fiji and repeat all the steps.
 
-<!--For Python, similarly install necessary packages (link).-->
-
-#### To compress images
+#### 1.2 Compress images with Jetraw UI
 
 1. Obtain the DAT file specific to your microscope ([VBC](https://biocenterat-my.sharepoint.com/:f:/g/personal/keisuke_ishihara_imp_ac_at/ErPO_7xw7lVKpNxMvQoY8N8B_CrWwhno9pOy0Sr8faB47g?e=3Tuo1R), Ishihara lab, *public links*).
 2. Obtain the associated software license key from the relevant person at your institute.
 3. Open Jetraw UI. Load DAT file. Apply license key.
-4. To compress an image:
+4. To compress an image (or all images within a folder):
  - Load an input image such as *M44-raw.tiff* (or *CQ1-raw.tiff*).
  - Select *Action: compress*.
  - Select *identifier: 000391 standard* (or *identifier: xxx*).
+ - Specify *destination*.
  - Click *GO*.
 5. Check that the resulting file size is smaller than the input.
 6. Check that you can open the compressed image in Fiji.
+
+**Note:** Jetraw UI will not copy non-TIFF files to the destination folder. One way to overcome this is to use the `--copy-others` flag when calling dpcore. Another is to use a custom script that copies non-TIFF files. see Advanced usage.
+
+#### 1.3 Decompress images with Jetraw UI
+
+1. Load a compressed image such as *M44-compressed.tiff* (or *CQ1-compressed.tiff*).
+2. Select *Action: decompress*.
+3.  Specify *destination*.
+4. Click *GO*.
 
 
 ## 2. Advanced usage
@@ -48,7 +56,8 @@ Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej
 - [OME-TIFF conversion followed by compression](OMETIFFconversionCompression.md)
  - Use case 1: Microscopy data is not in TIFF format (e.g. Olympus, Nikon, Zeiss, Leica)
  - Use case 2: Reduce the number of tiff files in CQ1 data by stacking in Z or T.
-
+- [pyJetraw](https://github.com/Jetraw/pyJetraw) from Jetraw
+ - Use case: To directly open compressed images in Python
 
 ## 3. Other information
 
@@ -61,7 +70,7 @@ Note to self: add DAT file and default settings here
 | M40   |  [VBC BioOptics](https://cores.imp.ac.at/biooptics/equipment/?xhtml=1%2F%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%27From%2FRK%3D0%2FRS%3DUhWihNMQI1LWDV3V.sJxktWcMkU-)| Olympus spinning disc confocal      | Hamamatsu Orca Flash x 2 |
 | M44   |  [VBC BioOptics](https://cores.imp.ac.at/biooptics/equipment/?xhtml=1%2F%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%27From%2FRK%3D0%2FRS%3DUhWihNMQI1LWDV3V.sJxktWcMkU-)| Olympus spinning disc confocal      | Hamamatsu Orca Fusion    |
 | M45   |  [VBC BioOptics](https://cores.imp.ac.at/biooptics/equipment/?xhtml=1%2F%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%5C%27From%2FRK%3D0%2FRS%3DUhWihNMQI1LWDV3V.sJxktWcMkU-)| Viventis Lightsheet LS1             | Andor Zyla 4.2 |
-| CQ1   | Ishihara lab | Yokogawa CQ1 spinning disc confocal | Hamamatsu Orca Flash |
+| CQ1 Daido | Ishihara lab | Yokogawa CQ1 spinning disc confocal | Hamamatsu Orca Flash |
 
 #### Other resources
 
