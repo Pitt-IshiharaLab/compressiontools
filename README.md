@@ -20,7 +20,7 @@ Opening Jetraw images is free, while **image compression requires a software lic
 
 Tested to work on: Windows/macOS + [Fiji 20231211-1317](https://downloads.imagej.net/fiji/archive/20231211-1317/) with Bio-Formats 7.1.0
 
-All necessary files are found in these links (ask Keisuke for access): [for VBC] (https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx)
+All necessary files are found in these links (ask Keisuke for access): [for VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx)
 and [for Pitt](https://pitt-my.sharepoint.com/:f:/r/personal/ishihara_pitt_edu/Documents/Jetraw_Pitt-IshiharaLab_restrictedaccess?csf=1&web=1&e=oOXouJ)
 
 1. Install Jetraw UI from the link above.
