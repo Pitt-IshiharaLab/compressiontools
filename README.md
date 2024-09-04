@@ -30,7 +30,9 @@ and [for Pitt](https://pitt-my.sharepoint.com/:f:/r/personal/ishihara_pitt_edu/D
 3. Overwrite *formats-bsd-x.y.z.jar*  with the file of the same name, found in the link above.
 4. Restart Fiji and check that you can open *CQ1-compressed.tiff* under the `\images` folder in this repository.
 
-**Warning**: Avoid updating this Fiji installation or its Bio-Formats plugin as it can break the Jetraw image read capability. If this breaks, you will need to reinstall Fiji and repeat all the steps.
+**Warning**: Avoid updating this Fiji installation or its Bio-Formats plugin as it can break the Jetraw image read capability. If this breaks, you will need to reinstall Fiji and repeat all the steps. A pro-tip for using Fiji is to keep an archive of a working Fiji installation.
+
+**Windows users**: If you're annoyed at how long it takes to decompress the Fiji zip file upon installation, consider using a free archive utility like [7zip](https://7-zip.org/download.html). It's much faster.
 
 #### 1.2 Compress images with Jetraw UI
 
