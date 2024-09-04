@@ -18,24 +18,29 @@ Opening Jetraw images is free, while **image compression requires a software lic
 
 #### 1.1 Open compressed images in Fiji
 
-Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej.net/fiji/archive/20221201-1017/) with Bio-Formats 6.11.1
+Tested to work on: Windows/macOS + [Fiji 20231211-1317](https://downloads.imagej.net/fiji/archive/20231211-1317/) with Bio-Formats 7.1.0
 
-1. Install Jetraw UI ([Jetraw UI](https://www.jetraw.com/downloads/software)). **Note**: For Windows computer, make sure C:\Program Files\Jetraw\bin64 is added to the "Path" in Environmental Variables > System Variables. This may require admin privileges.
+All necessary files are found in these links (ask Keisuke for access): [for VBC] (https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx)
+and [for Pitt](https://pitt-my.sharepoint.com/:f:/r/personal/ishihara_pitt_edu/Documents/Jetraw_Pitt-IshiharaLab_restrictedaccess?csf=1&web=1&e=oOXouJ)
+
+1. Install Jetraw UI from the link above.
+ - Installation files are \*.msi for Windows and \*.dmg for macOS.
+ - For Windows computer, make sure C:\Program Files\Jetraw\bin64 is added to the "Path" in Environmental Variables > System Variables. This may require admin privileges.
 2. Determine the Bio-Formats version in your Fiji installation (go to: *path_to_fiji_app/jars/bio-formats/*).
-3. Replace *formats-bsd-6.x.y.jar* with Jetraw's version. (6.11.1 JAR file for [VBC](https://biocenterat-my.sharepoint.com/:f:/r/personal/keisuke_ishihara_imp_ac_at/Documents/Jetraw_VBCrestrictedaccess?csf=1&web=1&e=XizOPx) and [Ishihara lab](https://pitt-my.sharepoint.com/:f:/r/personal/ishihara_pitt_edu/Documents/Jetraw_Pitt-IshiharaLab_restrictedaccess?csf=1&web=1&e=oOXouJ), ask Keisuke for access.)
-4. Restart Fiji and check that you can open *M44-compressed.tiff*.
+3. Overwrite *formats-bsd-x.y.z.jar*  with the file of the same name, found in the link above.
+4. Restart Fiji and check that you can open *CQ1-compressed.tiff* under the `\images` folder in this repository.
 
 **Warning**: Avoid updating this Fiji installation or its Bio-Formats plugin as it can break the Jetraw image read capability. If this breaks, you will need to reinstall Fiji and repeat all the steps.
 
 #### 1.2 Compress images with Jetraw UI
 
-1. Obtain the DAT file specific to your microscope ([VBC](https://biocenterat-my.sharepoint.com/:f:/g/personal/keisuke_ishihara_imp_ac_at/ErPO_7xw7lVKpNxMvQoY8N8B_CrWwhno9pOy0Sr8faB47g?e=3Tuo1R), Ishihara lab, *public links*).
-2. Obtain the associated software license key from the relevant person at your institute.
+1. Obtain the DAT file specific to your microscope from the link above.
+2. Obtain the associated software license key.
 3. Open Jetraw UI. Load DAT file. Apply license key.
 4. To compress an image (or all images within a folder):
- - Load an input image such as *M44-raw.tiff* (or *CQ1-raw.tiff*).
+ - Load an input image such as *CQ1-raw.tiff*.
  - Select *Action: compress*.
- - Select *identifier: 000391 standard* (or *identifier: xxx*).
+ - Select *identifier: 306296 No binning*. (Select appropriate setting for binned images.)
  - Specify *destination*.
  - Click *GO*.
 5. Check that the resulting file size is smaller than the input.
@@ -45,7 +50,7 @@ Tested to work on: Windows/macOS + [Fiji 20221201-1017](https://downloads.imagej
 
 #### 1.3 Decompress images with Jetraw UI
 
-1. Load a compressed image such as *M44-compressed.tiff* (or *CQ1-compressed.tiff*).
+1. Load a compressed image such as *CQ1-compressed.tiff*.
 2. Select *Action: decompress*.
 3.  Specify *destination*.
 4. Click *GO*.
