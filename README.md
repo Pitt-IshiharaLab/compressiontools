@@ -54,17 +54,17 @@ and [for Pitt](https://pitt-my.sharepoint.com/:f:/r/personal/ishihara_pitt_edu/D
 
 1. Load a compressed image such as *CQ1-compressed.tiff*.
 2. Select *Action: decompress*.
-3.  Specify *destination*.
+3. Specify *destination*.
 4. Click *GO*.
 
 
 ## 2. Advanced usage
 - [Compressing multiple data sets from CQ1 microscope](compressMultipleCQ1data.md)
 - [OME-TIFF conversion followed by compression](OMETIFFconversionCompression.md)
- - Use case 1: Microscopy data is not in TIFF format (e.g. Olympus, Nikon, Zeiss, Leica)
- - Use case 2: Reduce the number of tiff files in CQ1 data by stacking in Z or T.
+  - Use case 1: Microscopy data is not in TIFF format (e.g. Olympus, Nikon, Zeiss, Leica)
+  - Use case 2: Reduce the number of tiff files in CQ1 data by stacking in Z or T.
 - [pyJetraw](https://github.com/Jetraw/pyJetraw) from Jetraw
- - Use case: To directly open compressed images in Python
+  - Use case: To directly open compressed images in Python
 
 ## 3. Other information
 
