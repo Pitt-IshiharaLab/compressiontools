@@ -1,4 +1,4 @@
-## Compressing multiple data sets from CQ1 microscope
+# Compressing multiple data sets from CQ1 microscope
 
 When compressing multiple data sets, using Jetraw UI is not advised since
  
@@ -8,12 +8,21 @@ When compressing multiple data sets, using Jetraw UI is not advised since
 This page explains how to automate the compression of multiple data sets from CQ1 while safely copying all non-TIFF files.
 We will use the command line tool [dpcore](https://github.com/Jetraw/Jetraw?tab=readme-ov-file#command-line-utilities).
 
+## Preparation
+
 **Pre-requisite:** Compression with Jetraw UI is working on your computer.
 
-Open command prompt (Windows) or terminal (macOS), type `dcpore -h`, and hit enter.
-You should see the usage instructions for dpcore.
+It will be useful to add `dpcore` and `jetraw` immediately accessible from your terminal.
 
-## Instructions for MacOS
+1. In the terminal type: 
+`vim ~/.zshrc` (In older systems it might be .bashr)
+2. Type “i” to start editing the text and copy the following line:
+`export PATH=$PATH:/Applications/Jetraw\ UI.app/Contents/jetraw/bin`
+3. Hit “ESC” followed by “:wq” to save the changes.
+4. Quit the terminal application.
+5. Restart terminal and execute `jetraw -h` or `dpcore -h`. You should get the help menu. 
+
+# Instructions for MacOS
 
 You have multiple datasets as subdirectory in the parent directory "path\_input". You want to compress all tiff files and copy everything else to the destination directory "path\_output". 
 
@@ -26,7 +35,7 @@ The compression options are:
 - `306296_bin2x`
 - `306296_bin4x`
 
-## Instructions for Windows
+# Instructions for Windows
 
 Similar to above but replace `/` with `\`.
 
