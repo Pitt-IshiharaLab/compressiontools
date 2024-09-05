@@ -21,6 +21,10 @@ You have multiple datasets as subdirectory in the parent directory "path\_input"
 dpcore -c -d /path_output/. -i 306296 /path_input --preserve-extension --copy-others --recursive
 ```
 
+The compression options are:
+- `306296`
+- `306296_bin2x`
+- `306296_bin4x`
 
 ## Instructions for Windows
 
