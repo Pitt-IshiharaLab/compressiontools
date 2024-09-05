@@ -18,7 +18,7 @@ You should see the usage instructions for dpcore.
 You have multiple datasets as subdirectory in the parent directory "path\_input". You want to compress all tiff files and copy everything else to the destination directory "path\_output". 
 
 ```
-dpcore -c -d /path_output/. -i 306296 /path_input --preserve-extension --copy-others --recursive
+dpcore -c -d /path_output/. -i 306296 path_input --preserve-extension --copy-others --recursive
 ```
 
 The compression options are:
@@ -32,5 +32,5 @@ Similar to above but replace `/` with `\`.
 
 
 ```
-dpcore -c -d \path_output\. -i 306296 \path_input --preserve-extension --copy-others --recursive
+dpcore -c -d \path_output\. -i 306296 path_input --preserve-extension --copy-others --recursive
 ```
